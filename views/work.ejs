@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/21c8a2e08a.js" crossorigin="anonymous"></script>
+
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Dancing+Script:wght@400;500;600;700&family=Edu+SA+Beginner:wght@400;500;600;700&family=Great+Vibes&family=Lumanosimo&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="">
+
+    <nav class="container navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-calendar-days" style="color: #311f51;"></i> Today</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/work"><i class="fa-solid fa-briefcase"></i> Work</a>
+              </li>
+            </ul>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+      </nav>
+
+
+
+    <div class="container" id="date">
+      <h4>
+        Work List
+      </h4>
+      
+    </div>
+
+
+    <div class="container" id="main-body">
+      <form class="d-flex row" action="/work" method="post">
+        <div class="col-10">
+          <input class="form-control me-2" type="text" name="entry" id="entry" required autocomplete="off">
+        </div>
+        <div class="d-grid gap-2 col-2">
+          <button class="btn btn-outline-success" title="Add  Task" type="submit"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        
+      </form>
+
+
+      <div id="tasks">
+        <% if(locals.work.length == 0){ %> 
+          <div class="error">
+            <p class="demo">Nothing to do!!!</p>
+            <img src="/images/smile.png" alt="hola">
+          </div>
+        <% } else { %>
+          <ul>
+            <form class="d-block" action="/delete/work" method="post">
+          <% for(let i=0; i<work.length; i++) {%> 
+              <!-- ekhan theke -->
+              <li class="checking">
+                <div class = "row checking">
+                  <div class="checkbox col-10 row">
+                    <input type="checkbox" id="packersOff-<%= i %>" name="packersOff" value="1" onchange="toggleStrikeThrough(this)" class="col-1 inputCheck">
+                    <label class="col-10 selected" for="packersOff-<%= i %>">
+                    <span>
+                      <% const mySentence = work[i];
+                        const words = mySentence.split(" ");
+                        for (let i = 0; i < words.length; i++) {
+                          words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+                        }
+                         %>
+                      <%= words.join(" "); %>
+                    </span>
+                  </label>
+                  </div>
+                  <div class="col-md-auto"></div>
+                  <div class="col-1 buttondiv">
+                    <button type="submit" name="deleteButton" class="btn btn-outline-danger" value="<%= i %>"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </li>
+              <hr>
+              <!-- eto ta  -->
+            <% } %>
+          </ul>
+            <% } %>
+      </div>
+    </div>
+    <script>
+      function toggleStrikeThrough(checkbox) {
+        const liElement = checkbox.closest("li");
+        liElement.classList.toggle("strikethrough");
+      }
+      if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+  </script>
+  </body>
+</html>
+
+
+
+<!-- <input onChange="this.form.submit()" type="checkbox" name="checked" id=""> -->

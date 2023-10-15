@@ -1,0 +1,219 @@
+/* font-family: 'Borel', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Edu SA Beginner', cursive;
+font-family: 'Great Vibes', cursive;
+font-family: 'Lumanosimo', cursive;
+font-family: 'Tangerine', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Crafty+Girls&family=Dancing+Script:wght@400;500;600;700&family=Edu+SA+Beginner:wght@400;500;600;700&family=Great+Vibes&family=Lumanosimo&family=MuseoModerno:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&family=Schoolbell&family=Style+Script&family=Tangerine:wght@400;700&display=swap');
+
+@font-face {
+    font-family: myFirstFont;
+    src: url("FoundationTitlesHand.ttf");
+  }
+body
+{
+    background-color: #F0EDD4;
+}
+
+.demo
+{
+    /* font-family: myFirstFont; */
+    /* font-family: 'Tangerine', cursive; */
+    /* font-family: 'Lumanosimo', cursive; */
+    /* font-family: 'Great Vibes', cursive; */
+    font-family: myFirstFont;
+    font-size: 30px;
+}
+.error
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12.5rem;
+    flex-wrap: wrap;
+}
+.error img
+{
+    position: absolute;
+    width: 20rem;
+    height: fit-content;
+    z-index: -1;
+    top: 20rem;
+}
+
+#date
+{
+    background-color: #FFE69A;
+    border-bottom: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-family: 'MuseoModerno', cursive;
+    margin: 2rem auto 0;
+    padding: 1rem 5rem;
+    text-align: center;
+    width: 30rem;
+    
+}
+
+#main-body
+{
+    background-color: #F0F0F0;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: 0px;
+    height: 35rem;
+    margin: 0 auto 2rem;
+    padding: 1rem 2.5rem;
+    width: 30rem;
+}
+
+#tasks {
+    margin-top: 1rem;
+    height: 30rem;
+    overflow-y: scroll; /* Hide the scrollbar by default */
+    border-bottom: #888 solid 1px;
+    mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+    -webkit-mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+    mask-size: 100% 20000px;
+    mask-position: left bottom;
+    -webkit-mask-size: 100% 20000px;
+    -webkit-mask-position: left bottom;
+    transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#tasks::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 8px;
+}
+
+#tasks::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#tasks::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#tasks::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #tasks {
+        scrollbar-gutter: both; /* Enable the experimental scrollbar-gutter property */
+    }
+
+    /* Style the scrollbar thumb with rounded borders */
+    #tasks::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+    }
+
+    /* Style the scrollbar thumb on hover */
+    #tasks::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+#tasks:hover {
+    -webkit-mask-position: left top;
+}
+
+#entry
+{ 
+    font-family: 'Schoolbell', cursive;
+}
+
+#tasks ul
+{
+    padding: 1rem;
+    padding-top: 0;
+}
+#tasks ul li
+{
+    list-style: none;
+    transition: ease-in-out 250ms;
+}
+#tasks ul li button
+{
+    align-items: flex-end;
+}
+
+.checking
+{
+    margin: 0;
+    padding:0.5rem 0;
+}
+
+li .checking
+{
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
+
+hr
+{
+    margin: 0;
+}
+
+
+span {
+    position: relative;
+    top: 5px;
+    font-family: 'Crafty Girls', cursive;
+    font-weight: 600;
+}  
+
+.strikethrough
+{
+    background: #d4d4d4 padding-box;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    color: #888;
+    /* box-shadow: 0 10px 5px 1px #f1f1f1; */
+}
+input[type="checkbox" i]
+{
+    cursor: pointer;
+    transition: 300ms ease-out;
+    font-family: 'Font Awesome 5 Pro';
+    
+    &:active {
+        transform: scale(.6);
+      }
+}
+.checkbox label
+{
+    cursor: pointer;
+    padding-top:0.25rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    transition: 300ms ease-out;
+    &:active {
+        transform: scale(1);
+      }
+}
+
+.buttondiv
+{
+    display: flex;
+    align-items: center;
+}
+
+.inputCheck
+{
+    margin-left: 0.25rem;
+    border-radius: 50px;
+}
+
+#tasks li:hover
+{
+    background-color: #e1e1e1;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
